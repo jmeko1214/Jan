@@ -32,8 +32,5 @@ ${OBJ}/WyrazenieZesp.o: src/WyrazenieZesp.cpp inc/WyrazenieZesp.hh\
 	g++ -c ${FLAGS} -o ${OBJ}/WyrazenieZesp.o src/WyrazenieZesp.cpp
 
 
-
-
-
 clear:
 	rm -f ${TRGDIR}/test_arytm_zesp ${OBJ}/*
