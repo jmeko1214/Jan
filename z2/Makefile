@@ -37,8 +37,5 @@ ${OBJ}/Statystyki.o: src/Statystyki.cpp inc/Statystyki.h
 	g++ -c ${FLAGS} -o ${OBJ}/Statystyki.o src/Statystyki.cpp
 
 
-
-
-
 clear:
 	rm -f ${TRGDIR}/test_arytm_zesp ${OBJ}/*
