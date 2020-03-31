@@ -73,24 +73,19 @@ void UstawTest( BazaTestu *wskBazaTestu, WyrazenieZesp *wskTabTestu, unsigned in
  */
 bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char *sNazwaTestu )
 {
-  if (!strcmp(sNazwaTestu,"latwy"))
-    {
-      UstawTest(wskBazaTestu,TestLatwy,sizeof(TestLatwy)/sizeof(WyrazenieZesp));
-      return true;
-    }
+  if (!strcmp(sNazwaTestu,"latwy")) {
+    UstawTest(wskBazaTestu,TestLatwy,sizeof(TestLatwy)/sizeof(WyrazenieZesp));
+    return true;
+  }
   /*
    * Analogicznie zrob inicjalizacje dla testu trudne
    */
-  else if (!strcmp(sNazwaTestu,"trudny"))
-    {
-      UstawTest(wskBazaTestu,TestTrudny,sizeof(TestTrudny)/sizeof(WyrazenieZesp));
-      return true;
-    }
-  else
-    {
-      cerr << "Otwarcie testu '" << sNazwaTestu << "' nie powiodlo sie." << endl;
-      return false;
-    }
+  if (!strcmp(sNazwaTestu,"trudny")) {
+    UstawTest(wskBazaTestu,TestTrudny,sizeof(TestTrudny)/sizeof(WyrazenieZesp));
+    return true;
+  
+  cerr << "Otwarcie testu '" << sNazwaTestu << "' nie powiodlo sie." << endl;
+  return false;
 }
 
 

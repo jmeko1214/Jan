@@ -1,53 +1,137 @@
- #include "WyrazenieZesp.hh"
+#include "WyrazenieZesp.hh"
+#include "LZespolona.hh"
+#include<iostream>
 
+using namespace std;
 
 /*
  * Tu nalezy zdefiniowac funkcje, ktorych zapowiedzi znajduja sie
  * w pliku naglowkowym.
  */
 
-std::istream & operator >> (std::istream & strm, WyrazenieZesp & wyraz)
+std::ostream & operator<< (std::ostream &strm, const WyrazenieZesp &Z1)
+{
+  strm<<Z1.Arg1;
+  if(strm.fail())
+    {
+      return strm;
+    }
+  if(Z1.Op==Operator::Op_Dodaj)
+    {
+      strm<<"+";
+    }
+  else if(Z1.Op==Operator::Op_Odejmij)
+    {
+      strm<<"-";
+    }
+  else if(Z1.Op==Operator::Op_Mnoz)
+    {
+      strm<<"*";
+    }
+  else if(Z1.Op==Operator::Op_Dziel)
+    {
+      strm<<"/";
+    }
+  if(strm.fail())
+    {
+      return strm;
+    }
+  strm<<endl;
+}
+
+std::istream &operator>> (std::istream &strm, WyrazenieZesp &WZ)
+{
+  strm>>WZ.Arg1;
+  if(strm.fail())
+    {
+      return strm;
+    }
+  strm >> WZ.op;
+  if(strm.fail())
+    {
+      return strm;
+    }
+  strm>>WZ.Arg2;
+  if(strm.fail())
+    {
+      return strm;
+    }
+}
+
+
+std::istream &operator >> (std::istream &strm, Operator &Op)
 {
   char znak;
-  strm >> wyraz.Arg1 >> znak >> wyraz.Arg2;
+  strm >> znak;
   switch(znak)
     {
     case '+':
       {
-	wyraz.Op = Op_Dodaj;
+	Op = Op_Dodaj;
 	break;
       }
     case '-':
       {
-	wyraz.Op = Op_Odejmij;
+	Op = Op_Odejmij;
 	break;
       }
     case '*':
       {
-	wyraz.Op = Op_Mnoz;
+	Op = Op_Mnoz;
 	break;
       }
     case '/':
       {
-	wyraz.Op = Op_Dziel;
+	Op = Op_Dziel;
 	break;
       }
     default:
       {
-        cout<< "Nie znam tekiej operacji"<<endl;
+	strm.setstate(std::ios::failbit);
+	break;
+      }
+    }
+  return strm;
+}
+
+			    
+LZespolona Oblicz(WyrazenieZesp  WyrZ)
+{
+  LZespolona Wynik;
+  switch(WyrZ.Op)
+    {
+    case Operator::Op_Dodaj:
+      {
+	Wynik=WyrZ.Arg1+WyrZ.Arg2;
+	return Wynik;
+	break;
+      }
+    case Operator::Op_Odejmij:
+      {
+	Wynik=WyrZ.Arg1-WyrZ.Arg2;
+	return Wynik;
+	break;
+      }
+    case Operator::Op_Mnoz:
+      {
+	Wynik=WyrZ.Arg1*WyrZ.Arg2;
+	return Wynik;
+	break;
+      }
+    case Operator::Op_Dziel:
+      {
+	Wynik=WyrZ.Arg1/WyrZ.Arg2;
+	return Wynik;
+	break;
+      }
+    default:
+      {
+	cout<<"Nie rozpoznalem dzialania"<<endl;
+	Wynik.re=0;
+	Wynik.im=0;
+	return Wynik;
 	break;
       }
     }
 }
 
-
-void Wyswietl(WyrazenieZesp  WyrZ)
-   {
-     cout<< "Wyrazenie zespolone " << WyrZ << endl;
-   }
-			    
-LZespolona Oblicz(WyrazenieZesp  WyrZ)
-   {
-     WyrZ(Arg1,Arg2);
-
-   }

@@ -1,19 +1,14 @@
 #include <iostream>
 #include "BazaTestu.hh"
-#include "BazaTestu.cpp"
-#include "WyrazenieZesp.cpp"
-#include "LZespolona.cpp"
+#include "WyrazenieZesp.hh"
+#include "LZespolona.hh"
+#include "Statystyki.hh"
 
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
-  Wynik = Dodaj(Z1,Z2);
-  Wynik = Odejmnij(Z1,Z2);
-  Wynik = Pomnoz(Z1,Z2);
-  Wynik = Podziel(Z1,Z2);
-
   if (argc < 2)
   {
     cout << endl;
@@ -39,19 +34,46 @@ int main(int argc, char **argv)
   cout << endl;
 
   WyrazenieZesp   WyrZ_PytanieTestowe;
+  LZespolona Wynik_Odpowiedz;
+  LZespolona Wynik_Dobry;
+  stat test;
+  float dobra;
+  double percent;
+  cout<< " Witam w moim sprawdzianie z liczb zespolonych" <<endl;
+
+  statystyki(test);
   
   while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe))
   {
-    cout << " Czesc rzeczywista pierwszego argumentu: ";
-    cout << WyrZ_PytanieTestowe.Arg1.re << endl;
-    cout << " Czesc urojona pierwszego argumentu: ";
-    cout << WyrZ_PytanieTestowe.Arg1.im << endl;
-    cout << " Czesc rzeczywista drugiego argumentu: ";
-    cout << WyrZ_PytanieTestowe.Arg2.re << endl;
-    cout << " Czesc urojona drugiego argumentu: ";
-    cout << WyrZ_PytanieTestowe.Arg2.im << endl;
+    cout << " To jest twoje zadanie: ";
+    cout << WyrZ_PytanieTestowe;
+    Wynik_Dobry=Oblicz(WyrZ_PytanieTestowe);
+    cout<<"Twoja odpowiedz: "<<endl;
+    for(int i=0;i<3;i++)
+      {
+	cin>>Wynik_Odpowiedz;
+	if(cin.fail())
+	  {
+	    cout<<"Nie uzyskalem odpowiedzi. Podaj jeszcze raz!"<<endl;
+	    cin.clear();
+	    cin.ignore(1000, '\n');
+	  }
+	else
+	  {
+	    break;
+	  }
+	if(Wynik_Odpowiedz==Wynik_Dobry)
+	  {
+	    doda_dobra(test);
+	  }
+	else if(Wynik_Odpowiedz!=Wynik_Dobry)
+	  doda_zla(test);
+      }
   }
 
+  dobra=liczba_dobrych(test);
+  percent=percent_dobrych(test, dobra);
+  wyswietl_wyniki(dobra, percent);
   
   cout << endl;
   cout << " Koniec testu" << endl;
