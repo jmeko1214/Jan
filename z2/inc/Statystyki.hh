@@ -2,7 +2,7 @@
 #define STATYSTYKI_HH
 
 
-struct stat {
+struct stat{
   int l_odp;     //liczba odpowiedzi
   int l_dob;     //liczba dobrych odpowiedzi
 };
@@ -11,8 +11,8 @@ struct stat {
 void statystyki(stat &test);      //operacje statystyk
 void doda_dobra(stat &test);
 void doda_zla(stat &test);
-int liczba_dobrych(stat &test);
-float percent_dobrych(stat &test, float liczba_dobrych);
+float liczba_dobrych(stat &test);
+double percent_dobrych(stat &test, float liczba_dobrych);
 void wyswietl_wyniki(float liczba_dobrych, double percent_dobrych);
 
 

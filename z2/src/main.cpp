@@ -48,13 +48,13 @@ int main(int argc, char **argv)
     cout << " To jest twoje zadanie: ";
     cout << WyrZ_PytanieTestowe;
     Wynik_Dobry=Oblicz(WyrZ_PytanieTestowe);
-    cout<<"Twoja odpowiedz: "<<endl;
+    cout << "Twoja odpowiedz: " << endl;
     for(int i=0;i<3;i++)
       {
-	cin>>Wynik_Odpowiedz;
+	cin >> Wynik_Odpowiedz;
 	if(cin.fail())
 	  {
-	    cout<<"Nie uzyskalem odpowiedzi. Podaj jeszcze raz!"<<endl;
+	    cout << "Nie uzyskalem odpowiedzi. Podaj jeszcze raz!" << endl;
 	    cin.clear();
 	    cin.ignore(1000, '\n');
 	  }
@@ -67,7 +67,9 @@ int main(int argc, char **argv)
 	    doda_dobra(test);
 	  }
 	else if(Wynik_Odpowiedz!=Wynik_Dobry)
-	  doda_zla(test);
+	  {
+	    doda_zla(test);
+	  }
       }
   }
 
@@ -79,5 +81,4 @@ int main(int argc, char **argv)
   cout << " Koniec testu" << endl;
   cout << endl;
 
-  return 0;
 }

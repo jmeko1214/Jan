@@ -53,7 +53,7 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
   else
     {
       cerr << "Nie umiem dzielic przez zero!" << endl;
-      return 0;
+      return Wynik;
     }
 }
 
@@ -67,7 +67,7 @@ double dzielnik(LZespolona Skl1, LZespolona Skl2)
 
 bool operator == (LZespolona Skl1, LZespolona Skl2)
 {
-  if((Skl.re=Skl2.re) && (Skl1.im=Skl2.im))
+  if((Skl1.re=Skl2.re) && (Skl1.im=Skl2.im))
     {
       return true;
     }
@@ -79,7 +79,7 @@ bool operator == (LZespolona Skl1, LZespolona Skl2)
 
 bool operator != (LZespolona Skl1, LZespolona Skl2)
 {
-  if((Skl.re!=Skl2.re) || (Skl1.im!=Skl2.im))
+  if((Skl1.re!=Skl2.re) || (Skl1.im!=Skl2.im))
     {
       return false;
     }
@@ -91,7 +91,7 @@ bool operator != (LZespolona Skl1, LZespolona Skl2)
 
 std::ostream & operator << (std::ostream &strm, const LZespolona &Z1)
 {
-  strm << "(" << Z1.re << std::showpos << Z1.im << std::nonshowpos << "i)";
+  strm << "(" << Z1.re << std::showpos << Z1.im << std::noshowpos << "i)";
   return strm;
 }
 
@@ -119,6 +119,7 @@ std::istream & operator >> (std::istream &strm, LZespolona &Z1)
   if(znak!=')')
     {
       strm.setstate(std::ios::failbit);
+    }
   return strm;
 }
 

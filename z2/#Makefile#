@@ -33,7 +33,7 @@ ${OBJ}/WyrazenieZesp.o: src/WyrazenieZesp.cpp inc/WyrazenieZesp.hh\
                        inc/LZespolona.hh
 	g++ -c ${FLAGS} -o ${OBJ}/WyrazenieZesp.o src/WyrazenieZesp.cpp
 
-${OBJ}/Statystyki.o: src/Statystyki.cpp inc/Statystyki.hh
+${OBJ}/Statystyki.o: src/Statystyki.cpp inc/Statystyki.h
 	g++ -c ${FLAGS} -o ${OBJ}/Statystyki.o src/Statystyki.cpp
 
 

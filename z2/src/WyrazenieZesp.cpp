@@ -36,6 +36,11 @@ std::ostream & operator<< (std::ostream &strm, const WyrazenieZesp &Z1)
     {
       return strm;
     }
+  strm<<Z1.Arg2;
+  if(strm.fail())
+    {
+      return strm;
+    }
   strm<<endl;
 }
 
@@ -46,7 +51,7 @@ std::istream &operator>> (std::istream &strm, WyrazenieZesp &WZ)
     {
       return strm;
     }
-  strm >> WZ.op;
+  strm >> WZ.Op;
   if(strm.fail())
     {
       return strm;
@@ -59,7 +64,7 @@ std::istream &operator>> (std::istream &strm, WyrazenieZesp &WZ)
 }
 
 
-std::istream &operator >> (std::istream &strm, Operator &Op)
+std::istream &operator>> (std::istream &strm, Operator &Op)
 {
   char znak;
   strm >> znak;

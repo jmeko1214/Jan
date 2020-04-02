@@ -34,7 +34,7 @@ bool operator != (LZespolona Skl1, LZespolona Skl2);
 double dzielnik(LZespolona Skl1, LZespolona Skl2);
 
 std::ostream & operator << (std::ostream &strm, const LZespolona &Z1);
-std::istream & operator << (std::istream &strm, LZespolona &Z1);
+std::istream & operator >> (std::istream &strm, LZespolona &Z1);
 
 
 #endif
