@@ -1,0 +1,38 @@
+#include "Statystyki.hh"
+
+
+void statystyki(stat &wskBazaTestu)
+{
+  test.l_odp=0;
+  test.l_dob=0;
+}
+
+void doda_dobra(stat &wskBazaTestu)
+{
+  test.l_odp++;
+  test.l_dop++;
+}
+
+void doda_zla(stat &wskBazaTestu)
+{
+  test.l_odp++;
+}
+
+int liczba_dobrych(stat &wskBazaTestu)
+{
+  int dobra=test.l_dob;
+  return dobra;
+}
+
+float percent_dobrych(stat wskBazaTestu)
+{
+  float percent = (test.l_dob/test.l_odp) * 100;
+  return percent;
+}
+
+void wyswietl_wyniki(int liczba_dobrych, float percent_dobrych)
+{
+  cout<< "Twoj wynik to: "<< liczba_dobrych <<" dobrych odpowiedzi."<<endl;
+  cout<< "Procentowy wynik dobrych odpowiedzi to: " << percent_dobrych<< "%" <<endl;
+  cout<< "Dziekujemy, zapraszamy ponownie :)\n";
+}
