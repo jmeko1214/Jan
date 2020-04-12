@@ -5,37 +5,35 @@
 #include <iostream>
 
 
-/*
- *  Tutaj trzeba opisac klase. Jakie pojecie modeluje ta klasa
- *  i jakie ma glowne cechy.
- */
 class Wektor {
-  /*
-   *  Tutaj trzeba wstawic definicje odpowiednich pol i metod prywatnych
-   */
+  double tab[ROZMIAR];
+
   public:
-  /*
-   *  Tutaj trzeba wstawic definicje odpowiednich metod publicznych
-   */    
+  Wektor();
+  Wektor(double x, double y, double z);
+  Wektor(double * tab);
+
+  // const Wektor & operator += (const Wektor & W2);
+  const Wektor & operator + (const Wektor & W2) const;   //operacje matematyczne
+  const Wektor & operator - (const Wektor & W2) const;
+  double operator * (const Wektor & W2) const;   //iloczyn skalarny wektorów
+  const Wektor & operator * (double li) const;   //wektor * liczba
+  const Wektor & operator / (double li) const;   //wektor / liczba
+
+  Wektor operator * (double l1, Wektor W2);
+
+  bool operator == (const Wektor & W2) const;
+  bool operator != (const Wektor & W2) const;
+
+  double dlugosc() const;
+
+  const double & operator[] (int index) const;
+  double & operator[] (int index);
+  
+  std::istream& operator >> (std::istream &Strm, Wektor &Wek);
+  std::ostream& operator << (std::ostream &Strm, const Wektor &Wek);
+
 };
 
-
-/*
- * To przeciazenie trzeba opisac. Co ono robi. Jaki format
- * danych akceptuje. Jakie jest znaczenie parametrow itd.
- * Szczegoly dotyczace zalecen realizacji opisow mozna
- * znalezc w pliku:
- *    ~bk/edu/kpo/zalecenia.txt 
- */
-std::istream& operator >> (std::istream &Strm, Wektor &Wek);
-
-/*
- * To przeciazenie trzeba opisac. Co ono robi. Jaki format
- * danych akceptuje. Jakie jest znaczenie parametrow itd.
- * Szczegoly dotyczace zalecen realizacji opisow mozna
- * znalezc w pliku:
- *    ~bk/edu/kpo/zalecenia.txt 
- */
-std::ostream& operator << (std::ostream &Strm, const Wektor &Wek);
-
+  
 #endif
