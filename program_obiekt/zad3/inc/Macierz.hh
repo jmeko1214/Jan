@@ -10,12 +10,12 @@ class Macierz {
   
   public:
   MacierzKw();
-  MacierzKw(Wektor *w);
+  // MacierzKw(Wektor *w);
   MacierzKw(Wektor a1, Wektor a2, Wektor a3);    //interpretacja wierszowa macierzy
   //const MacierzKw & transpozycja() const;
   //const MacierzKw & odwrotnosc() const;
 
-  double wyznacznikGauss(); //metoda gauss'a
+  //double wyznacznikGauss(); //metoda gauss'a
   
   const Wektor operator * (const Wektor W2) const;          // wektor * macierz
   const MacierzKw operator * (const MacierzKw W2) const;    // macierz * macierz
@@ -24,14 +24,11 @@ class Macierz {
   const MacierzKw operator * (double 1) const;
   const MacierzKw operator / (double 1) const;
 
-  bool operator == (const MacierzKw & W2) const;
-  bool operator != (const MacierzKw & W2) const;
+  //  bool operator == (const MacierzKw & W2) const;
+  //bool operator != (const MacierzKw & W2) const;
 
   const Wektor & operator[] (int index) const;
   Wektor & operator[] (int index); // M[2][0] - zerowy element drugiego wektora
-
-  //const double & operator() (int index1, int index2) const;
-  //double & operator() (int index1, int index2);   //M(2,0)
 
   const Wektor & zwroc_kolumne(int index);
   void zmien_kolumne(int index, Wektor nowa);
